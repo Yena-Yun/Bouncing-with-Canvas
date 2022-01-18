@@ -1,6 +1,6 @@
 # Bouncing-with-Canvas
 
-<img src="https://user-images.githubusercontent.com/68722179/149880836-ab7ea0b5-6266-49aa-a607-bab9ccdaed26.png" />
+<img src="https://user-images.githubusercontent.com/68722179/149880836-ab7ea0b5-6266-49aa-a607-bab9ccdaed26.png" width="500" />
 
 바닐라 자바스크립트로
 Canvas를 활용한 공 튕기기 애니메이션 제작
