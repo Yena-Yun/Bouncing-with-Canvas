@@ -21,4 +21,4 @@ Canvas 공식문서의 공 튕기기 애니메이션을 만들어보고 나서, 
 
 ## 🏌️‍♂️ 배운 것
 * **클래스형 컴포넌트**의 **객체형 프로그래밍**을 경험하였습니다.
-* requestAnimationFrame 등 **canvas에 관한 함수**를 다룰 수 있게 되었습니다.
+* requestAnimationFrame 등 **canvas에 관한 함수**에 대해 익혔습니다.
