@@ -1,13 +1,14 @@
 # Ball Bouncing with Vanilla JS
 
+# ✨ [배포 링크](https://friendly-mclean-890b7f.netlify.app/)
+
 ## 🌊 유저 플로우
 * '시작하기' 버튼을 눌러 애니메이션 시작 
 * '복제하기' 버튼 (거듭제곱 수 복제, 여러 번 클릭 가능) 
 * '일시정지' 또는 '다시재생' 
 * '멈춤' 버튼으로 초기화
 
-## ✨ 배포 링크
-### https://friendly-mclean-890b7f.netlify.app/
+
 
 ## 🦀 구현 의도
 Canvas 공식문서의 공 튕기기 애니메이션 예제를 실습하고나서 <BR/> 
