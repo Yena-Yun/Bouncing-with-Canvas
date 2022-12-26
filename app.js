@@ -5,7 +5,8 @@ import { random, activeButton, inactiveButton } from './utils.js';
 let balls = [];
 let x = 10;
 let y = 10;
-let radius = 5;
+const SPEED = 5;
+const RADIUS = 5;
 
 let powerCnt = 0; // 거듭제곱할 횟수
 let poweredBallCnt = 1; // (거듭제곱으로 생성되는) 공의 개수
@@ -15,17 +16,17 @@ function createBall() {
     // ballCnt가 거듭제곱된 상태이면
     if (poweredBallCnt > 1) {
       // 공이 생성되는 좌표에 랜덤한 좌표값 부여
-      x = random(radius, width - radius);
-      y = random(radius, height - radius);
+      x = random(RADIUS, width - RADIUS);
+      y = random(RADIUS, height - RADIUS);
     }
 
-    const ball = new Ball(
+    const ball = new Ball({
       x,
       y,
-      5,
-      radius,
-      `rgb(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)})` // 공에 랜덤한 색상 부여
-    );
+      speed: SPEED,
+      radius: RADIUS,
+      color: `rgb(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)})`, // 공에 랜덤한 색상 부여
+    });
 
     balls.push(ball);
   }

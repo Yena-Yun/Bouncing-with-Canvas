@@ -1,7 +1,7 @@
 import { ctx, width, height } from './canvas.js';
 
 export default class Ball {
-  constructor(x, y, speed, radius, color) {
+  constructor({ x, y, speed, radius, color }) {
     this.x = x;
     this.y = y;
     this.velX = speed;
@@ -18,8 +18,9 @@ export default class Ball {
   }
 
   bounce() {
+    // 벽에 부딪히면 반대방향으로 이동
     if (this.x + this.radius >= width || this.x - this.radius <= 0) {
-      this.velX *= -1; // 벽에 부딪히면 반대방향으로 이동
+      this.velX *= -1;
     }
 
     if (this.y + this.radius >= height || this.y - this.radius <= 0) {
