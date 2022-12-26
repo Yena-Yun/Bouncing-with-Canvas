@@ -1,61 +1,20 @@
-const canvas = document.getElementById('canvas');
-
-const width = canvas.width;
-const height = canvas.height;
-
-const ctx = canvas.getContext('2d');
-
-class Ball {
-  constructor(x, y, speed, radius, color) {
-    this.x = x;
-    this.y = y;
-    this.velX = speed;
-    this.velY = speed;
-    this.radius = radius;
-    this.color = color;
-  }
-
-  draw() {
-    ctx.fillStyle = this.color;
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
-    ctx.fill();
-  }
-
-  bounce() {
-    if (this.x + this.radius >= width || this.x - this.radius <= 0) {
-      this.velX *= -1; // 벽에 부딪히면 반대방향으로 이동
-    }
-
-    if (this.y + this.radius >= height || this.y - this.radius <= 0) {
-      this.velY *= -1;
-    }
-
-    // 좌표에 속도를 붙여 공이 움직이게 함
-    this.x += this.velX;
-    this.y += this.velY;
-  }
-}
-
-// 랜덤 함수 (공의 움직임과 색깔을 랜덤으로 조정)
-function random(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-let powerCnt = 0; // 거듭제곱할 횟수
-let poweredBallCnt = 1; // (거듭제곱으로 생성되는) 공의 개수
+import Ball from './ball.js';
+import { ctx, width, height } from './canvas.js';
+import { random, activeButton, inactiveButton } from './utils.js';
 
 let balls = [];
-
 let x = 10;
 let y = 10;
 let radius = 5;
+
+let powerCnt = 0; // 거듭제곱할 횟수
+let poweredBallCnt = 1; // (거듭제곱으로 생성되는) 공의 개수
 
 function createBall() {
   while (balls.length < poweredBallCnt) {
     // ballCnt가 거듭제곱된 상태이면
     if (poweredBallCnt > 1) {
-      // 공이 생성되는 좌표값을 랜덤하게 만듦
+      // 공이 생성되는 좌표에 랜덤한 좌표값 부여
       x = random(radius, width - radius);
       y = random(radius, height - radius);
     }
@@ -65,7 +24,7 @@ function createBall() {
       y,
       5,
       radius,
-      `rgb(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)})` // 공에 랜덤색 부여
+      `rgb(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)})` // 공에 랜덤한 색상 부여
     );
 
     balls.push(ball);
@@ -89,22 +48,6 @@ function animate() {
   if (!isPaused) {
     myReq = requestAnimationFrame(animate);
   }
-}
-
-// 버튼 활성화
-function activeButton(button) {
-  button.style.color = '#000';
-  button.style.cursor = 'pointer';
-  button.style.backgroundColor = '#eee';
-  button.style.pointerEvents = 'auto';
-}
-
-// 버튼 비활성화
-function inactiveButton(button) {
-  button.style.color = '#c5c5c5';
-  button.style.cursor = 'default';
-  button.style.backgroundColor = '#eee';
-  button.style.pointerEvents = 'none';
 }
 
 // 시작 버튼
@@ -160,7 +103,6 @@ stopButton.addEventListener('click', () => {
   inactiveButton(pauseButton);
   inactiveButton(copyButton);
 
-  // 모두 초기화
   balls = [];
   powerCnt = 0;
   poweredBallCnt = 1;
@@ -175,6 +117,7 @@ stopButton.addEventListener('click', () => {
   activeButton(startButton);
 });
 
+// 첫 렌더링 시
 window.onload = () => {
   inactiveButton(pauseButton);
   inactiveButton(copyButton);
